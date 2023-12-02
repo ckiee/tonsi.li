@@ -23,29 +23,33 @@ english {
 :root {
     --notebook-paper: #f9ef96;
     --notebook-grid: #444cf7a0;
+    --purple-marker: #b758fc88;
+    --purple-marker-high-pressure: #70349b88;
 }
 
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
 }
 
 body {
-    font-size: 14px;
+    font-size: 24px;
     font-family: sitelen seli kiwen;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-content: center;
 }
+
 main {
     margin: 0 auto;
-    max-width: 400px;
+    max-width: 680px;
     height: fit-content;
 
     background-color: var(--notebook-paper);
-    background-size: 20px 20px;
-    line-height: 20px;
+    background-size: 34px 34px;
+    line-height: 34px;
     background-image: repeating-linear-gradient(
         0deg,
         var(--notebook-grid),
@@ -53,18 +57,18 @@ main {
         var(--notebook-paper) 1px,
         var(--notebook-paper)
     );
-    padding: 1em;
+    padding: 14px;
     border-radius: 2%; /* replace with clippymask of rough paper cut?*/
     transform: rotate(-2deg);
 }
 
 main article {
-    transform: translateY(6px);
+    margin-top: 6px;
 }
 
 p.dual {
     margin-top: 0px;
-    margin-bottom: 20px;
+    margin-bottom: 34px;
     display: inline-flex;
     width: 100%;
 }
@@ -78,13 +82,14 @@ p.dual > *:nth-child(2) {
 
 h1 {
     margin-top: 0px;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
 }
 ul {
     margin: 0;
 }
 h1.title {
     text-align: center;
+    font-size: 3rem;
 }
 h1.title:before {
     content: "tonsi";
@@ -97,10 +102,53 @@ ul {
     list-style-type: "en  ";
 }
 
-@media (max-width: 500px) {
+@media (max-width: 780px) {
     main {
         transform: none;
         height: 100%;
         border-radius: 0;
     }
+}
+
+button {
+    font-size: 3.25rem;
+    border: none;
+    font-family: sitelen seli kiwen; /* browser is an ass */
+    white-space: nowrap;
+    padding: 7px;
+    background: transparent;
+
+    position: relative;
+    z-index: 1;
+}
+button > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background-color: var(--purple-marker);
+    background: linear-gradient(
+        90.2deg,
+        var(--purple-marker-high-pressure) 1px,
+        var(--purple-marker) 1px,
+        var(--purple-marker) 99%,
+        var(--purple-marker-high-pressure) 1px
+    );
+    transform: skew(-7deg, 0deg);
+    border-radius: 5%;
+    z-index: -1;
+    backdrop-filter: blur(2px);
+}
+button:active > div {
+    top: 1px;
+    right: 1px;
+    filter: brightness(0.8);
+}
+button::before {
+    content: "[";
+}
+button::after {
+    content: "]";
 }
